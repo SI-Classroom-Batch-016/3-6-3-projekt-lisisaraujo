@@ -42,11 +42,11 @@ class HomeFragment : Fragment() {
 
         recyclerView.setHasFixedSize(true)
 
-        viewModel.locationList.observe(viewLifecycleOwner){
-            recyclerView.adapter = LocationAdapter(it)
+        viewModel.locationList.observe(viewLifecycleOwner) {
+            recyclerView.adapter = LocationAdapter(it, viewModel)
         }
 
-        viewModel.currentLocation.observe(viewLifecycleOwner){
+        viewModel.currentLocation.observe(viewLifecycleOwner) {
 
         }
 

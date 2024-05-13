@@ -35,8 +35,6 @@ class LocationFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
-
         viewModel.currentLocation.observe(viewLifecycleOwner) { currentLocation ->
             binding.locationDetailsLocationNameTV.text = currentLocation.name
             binding.locationDetailsLocationAddressTV.text = currentLocation.address
