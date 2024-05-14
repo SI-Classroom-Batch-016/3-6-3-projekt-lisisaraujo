@@ -1,7 +1,11 @@
+
+
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'androidx.navigation.safeargs.kotlin'
+    id 'kotlin-kapt'
+    id 'realm-android'
 }
 
 android {
@@ -20,6 +24,9 @@ android {
     // include viewBinding
     buildFeatures {
         viewBinding true
+    }
+    realm {
+        syncEnabled = true
     }
 
     buildTypes {
@@ -54,4 +61,8 @@ dependencies {
     implementation("com.mapbox.maps:android:11.3.1")
     // If you're using compose also add the compose extension
     implementation("com.mapbox.extension:maps-compose:11.3.1")
+
+// mongoDB dependencies
+    implementation("org.mongodb:mongodb-driver-kotlin-coroutine:5.1.0")
+    implementation("org.mongodb:bson-kotlinx:5.1.0")
 }
