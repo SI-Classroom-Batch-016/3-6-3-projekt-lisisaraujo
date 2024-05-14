@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
+import com.mapbox.android.gestures.AndroidGesturesManager
 
 import de.syntax_institut.mvvm.SharedViewModel
 import de.syntax_institut.mvvm.databinding.FragmentHomeBinding
@@ -15,6 +16,7 @@ import com.mapbox.geojson.Point
 import com.mapbox.maps.CameraOptions
 import com.mapbox.maps.EdgeInsets
 import com.mapbox.maps.MapView
+import com.mapbox.maps.plugin.gestures.gestures
 import com.mapbox.maps.plugin.viewport.data.FollowPuckViewportStateBearing
 import com.mapbox.maps.plugin.viewport.data.FollowPuckViewportStateOptions
 import com.mapbox.maps.plugin.viewport.state.FollowPuckViewportState
@@ -25,6 +27,8 @@ class HomeFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding
     private val viewModel: SharedViewModel by activityViewModels()
     private lateinit var mapView: MapView
+
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -49,23 +53,31 @@ class HomeFragment : Fragment() {
                 .zoom(11.0)
                 .bearing(0.0)
                 .build()
+
         )
 
         // Add the map view to the activity (you can also add it to other views as a child)
         binding.mapView.addView(mapView)
 
-        val viewportPlugin = mapView.viewport
 
-        val followPuckViewportState: FollowPuckViewportState = viewportPlugin.makeFollowPuckViewportState(
-            FollowPuckViewportStateOptions.Builder()
-                .bearing(FollowPuckViewportStateBearing.Constant(0.0))
-                .padding(EdgeInsets(200.0 * resources.displayMetrics.density, 0.0, 0.0, 0.0))
-                .build()
-        )
+        val gestureManager = mapView.gestures
+     gestureManager.scrollDecelerationEnabled = true
 
-        viewportPlugin.transitionTo(followPuckViewportState) { success ->
-            // The transition has been completed with a flag indicating whether the transition succeeded
-        }
+        val customStyleJson = "mapbox://styles/laraujo/clv5ohc8f00ky01quh8nqhlre"
+        mapView.mapboxMap.loadStyle(customStyleJson)
+
+//        val viewportPlugin = mapView.viewport
+//
+//        val followPuckViewportState: FollowPuckViewportState = viewportPlugin.makeFollowPuckViewportState(
+//            FollowPuckViewportStateOptions.Builder()
+//                .bearing(FollowPuckViewportStateBearing.Constant(0.0))
+//                .padding(EdgeInsets(200.0 * resources.displayMetrics.density, 0.0, 0.0, 0.0))
+//                .build()
+//        )
+//
+//        viewportPlugin.transitionTo(followPuckViewportState) { success ->
+//            // The transition has been completed with a flag indicating whether the transition succeeded
+//        }
 //        val recyclerView = binding.locationListRV
 //
 //        recyclerView.layoutManager = LinearLayoutManager(context)
