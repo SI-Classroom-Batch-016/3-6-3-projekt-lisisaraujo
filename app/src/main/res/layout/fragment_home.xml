@@ -31,20 +31,20 @@
 <!--        app:layout_constraintTop_toTopOf="parent"-->
 <!--        tools:ignore="DuplicateIds" />-->
 
-    <FrameLayout xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+<!--    <FrameLayout xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent">-->
 
-    <com.mapbox.maps.MapView
-        android:id="@+id/mapView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:mapbox_cameraTargetLat="39.5"
-        app:mapbox_cameraTargetLng="-98.0"
-        app:mapbox_cameraZoom="2.0"
-        app:mapbox_cameraPitch="0.0"
-        app:mapbox_cameraBearing="0.0"
-        tools:ignore="MissingClass" />
+<!--    <com.mapbox.maps.MapView-->
+<!--        android:id="@+id/mapView"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        app:mapbox_cameraTargetLat="39.5"-->
+<!--        app:mapbox_cameraTargetLng="-98.0"-->
+<!--        app:mapbox_cameraZoom="2.0"-->
+<!--        app:mapbox_cameraPitch="0.0"-->
+<!--        app:mapbox_cameraBearing="0.0"-->
+<!--        tools:ignore="MissingClass" />-->
 
-    </FrameLayout>
+<!--    </FrameLayout>-->
 </androidx.constraintlayout.widget.ConstraintLayout>

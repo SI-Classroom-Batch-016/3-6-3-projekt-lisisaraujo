@@ -48,12 +48,7 @@ class HomeFragment : Fragment() {
         )
 
         // Add the map view to the activity (you can also add it to other views as a child)
-        binding.mapView.addView(mapView)
-
-
-        val gestureManager = mapView.gestures
-     gestureManager.scrollDecelerationEnabled = true
-        mapView.gestures.pitchEnabled = false
+        binding.root.addView(mapView)
 
         val customStyleJson = "mapbox://styles/laraujo/clv5ohc8f00ky01quh8nqhlre"
         mapView.mapboxMap.loadStyle(customStyleJson)
