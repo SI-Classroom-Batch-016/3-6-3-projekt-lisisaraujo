@@ -1,26 +1,17 @@
 package de.syntax_institut.mvvm.ui
 
-import android.content.Context
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import com.mapbox.android.gestures.AndroidGesturesManager
-
-import de.syntax_institut.mvvm.SharedViewModel
-import de.syntax_institut.mvvm.databinding.FragmentHomeBinding
-
 import com.mapbox.geojson.Point
 import com.mapbox.maps.CameraOptions
-import com.mapbox.maps.EdgeInsets
 import com.mapbox.maps.MapView
 import com.mapbox.maps.plugin.gestures.gestures
-import com.mapbox.maps.plugin.viewport.data.FollowPuckViewportStateBearing
-import com.mapbox.maps.plugin.viewport.data.FollowPuckViewportStateOptions
-import com.mapbox.maps.plugin.viewport.state.FollowPuckViewportState
-import com.mapbox.maps.plugin.viewport.viewport
+import de.syntax_institut.mvvm.SharedViewModel
+import de.syntax_institut.mvvm.databinding.FragmentHomeBinding
 
 
 class HomeFragment : Fragment() {
@@ -62,6 +53,7 @@ class HomeFragment : Fragment() {
 
         val gestureManager = mapView.gestures
      gestureManager.scrollDecelerationEnabled = true
+        mapView.gestures.pitchEnabled = false
 
         val customStyleJson = "mapbox://styles/laraujo/clv5ohc8f00ky01quh8nqhlre"
         mapView.mapboxMap.loadStyle(customStyleJson)
