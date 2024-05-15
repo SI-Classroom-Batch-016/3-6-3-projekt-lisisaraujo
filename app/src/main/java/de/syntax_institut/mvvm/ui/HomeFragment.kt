@@ -6,10 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.mapbox.geojson.Point
 import com.mapbox.maps.CameraOptions
 import com.mapbox.maps.MapView
-import com.mapbox.maps.plugin.gestures.gestures
+import de.syntax_institut.mvvm.R
 import de.syntax_institut.mvvm.SharedViewModel
 import de.syntax_institut.mvvm.databinding.FragmentHomeBinding
 
@@ -50,21 +52,17 @@ class HomeFragment : Fragment() {
         // Add the map view to the activity (you can also add it to other views as a child)
         binding.root.addView(mapView)
 
+        binding.addLocationFAB.setOnClickListener{
+
+            it.findNavController().navigate(R.id.addLocationFragment)
+        }
+
         val customStyleJson = "mapbox://styles/laraujo/clv5ohc8f00ky01quh8nqhlre"
         mapView.mapboxMap.loadStyle(customStyleJson)
 
-//        val viewportPlugin = mapView.viewport
-//
-//        val followPuckViewportState: FollowPuckViewportState = viewportPlugin.makeFollowPuckViewportState(
-//            FollowPuckViewportStateOptions.Builder()
-//                .bearing(FollowPuckViewportStateBearing.Constant(0.0))
-//                .padding(EdgeInsets(200.0 * resources.displayMetrics.density, 0.0, 0.0, 0.0))
-//                .build()
-//        )
-//
-//        viewportPlugin.transitionTo(followPuckViewportState) { success ->
-//            // The transition has been completed with a flag indicating whether the transition succeeded
-//        }
+
+
+
 //        val recyclerView = binding.locationListRV
 //
 //        recyclerView.layoutManager = LinearLayoutManager(context)

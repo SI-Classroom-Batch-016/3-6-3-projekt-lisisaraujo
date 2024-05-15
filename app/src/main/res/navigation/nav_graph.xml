@@ -15,4 +15,9 @@
         android:name="de.syntax_institut.mvvm.ui.LocationFragment"
         android:label="fragment_location"
         tools:layout="@layout/fragment_location" />
+    <fragment
+        android:id="@+id/addLocationFragment"
+        android:name="de.syntax_institut.mvvm.ui.AddLocationFragment"
+        android:label="fragment_add_location"
+        tools:layout="@layout/fragment_add_location" />
 </navigation>

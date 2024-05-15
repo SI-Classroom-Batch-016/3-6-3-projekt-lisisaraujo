@@ -39,5 +39,7 @@ class LocationAdapter(private val locations: List<Location>, private val viewMod
             viewModel.goToLocationPage(position)
             it.findNavController().navigate(R.id.locationFragment)
         }
+
+
     }
 }

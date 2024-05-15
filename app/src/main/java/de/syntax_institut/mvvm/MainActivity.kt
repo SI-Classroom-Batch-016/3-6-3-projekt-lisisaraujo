@@ -14,6 +14,10 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+
+
+
 //
 //        val connectionString =
 //            ConnectionString("mongodb+srv://laruschel:L14vE6R0fb5RvHWF@cluster0.cwpjgeg.mongodb.net/queer_map")

@@ -67,7 +67,7 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
-                android:id="@+id/locationDetails_locationIconIv"
+                android:id="@+id/locationDetails_locationIconIV"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:scaleType="centerCrop"
