@@ -46,7 +46,6 @@ class HomeFragment : Fragment() {
                 .zoom(11.0)
                 .bearing(0.0)
                 .build()
-
         )
 
         // Add the map view to the activity (you can also add it to other views as a child)
