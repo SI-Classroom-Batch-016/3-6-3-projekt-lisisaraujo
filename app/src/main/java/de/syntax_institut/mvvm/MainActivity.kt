@@ -1,24 +1,25 @@
 package de.syntax_institut.mvvm
 
+import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-//import android.util.Log
-//import com.mongodb.ConnectionString
-//import com.mongodb.MongoClientSettings
-//import com.mongodb.kotlin.client.coroutine.MongoClient
-//import com.mongodb.kotlin.client.coroutine.MongoDatabase
-//import de.syntax_institut.mvvm.data.model.Location
-//import org.bson.Document
+import com.mongodb.kotlin.client.coroutine.*
 
 class MainActivity : AppCompatActivity() {
+    @SuppressLint("AuthLeak")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        // Replace the placeholder with your MongoDB deployment's connection string
+        val uri = "mongodb+srv://laruschel:L14vE6R0fb5RvHWF@cluster0.cwpjgeg.mongodb.net/queer_map"
+        val mongoClient = MongoClient.create(uri)
+        val database = mongoClient.getDatabase("q4q")
+        // Get a collection of documents of type Movie
+
+        mongoClient.close()
 
 
-
-//
 //        val connectionString =
 //            ConnectionString("mongodb+srv://laruschel:L14vE6R0fb5RvHWF@cluster0.cwpjgeg.mongodb.net/queer_map")
 //        val settings = MongoClientSettings.builder().applyConnectionString(connectionString).build()
