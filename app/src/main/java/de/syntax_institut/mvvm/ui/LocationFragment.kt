@@ -35,6 +35,5 @@ class LocationFragment : Fragment() {
         binding.locationDetailsBackBTN.setOnClickListener {
             it.findNavController().navigateUp()
         }
-
     }
 }
