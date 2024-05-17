@@ -34,11 +34,12 @@ class LocationAdapter(
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         val location = locations[position]
         val binding = holder.binding
+
         binding.locationDetailsCardLocationNameTV.text = location.name
         binding.locationDetailsLocationTypeTV.text = location.type
         binding.locationDetailsLocationAddressTV.text = location.address
 
-        holder.binding.locationDetailLocationCardCV.setOnClickListener {
+        binding.locationDetailLocationCardCV.setOnClickListener {
             itemClickedCallback(location)
         }
 

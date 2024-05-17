@@ -20,11 +20,6 @@ class SharedViewModel : ViewModel() {
     val currentLocation: LiveData<Location>
         get() = _currentLocation
 
-    val selectedLocation = MutableLiveData<Location>()
-//    fun goToLocationPage(position: Int) {
-//        _currentLocation.value = locations[position]
-//    }
-
     fun selectLocation(it: Location) {
         _currentLocation.value = it
     }

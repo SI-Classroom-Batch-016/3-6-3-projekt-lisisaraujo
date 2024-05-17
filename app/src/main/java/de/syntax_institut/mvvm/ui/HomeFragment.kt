@@ -1,6 +1,7 @@
 package de.syntax_institut.mvvm.ui
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,6 +10,9 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.firebase.Firebase
+import com.google.firebase.FirebaseApp
+import com.google.firebase.firestore.firestore
 import com.mapbox.geojson.Point
 import com.mapbox.maps.CameraOptions
 import com.mapbox.maps.MapView
@@ -21,6 +25,7 @@ import de.syntax_institut.mvvm.databinding.FragmentHomeBinding
 
 
 class HomeFragment : Fragment() {
+    val TAG = "HomeFragment"
     private lateinit var binding: FragmentHomeBinding
     private val viewModel: SharedViewModel by activityViewModels()
     private lateinit var mapView: MapView
@@ -61,35 +66,37 @@ class HomeFragment : Fragment() {
 //        val customStyleJson = "mapbox://styles/laraujo/clv5ohc8f00ky01quh8nqhlre"
 //        mapView.mapboxMap.loadStyle(customStyleJson)
 
+        // FIREBASE CONNECT
+//        val db = Firebase.firestore
+//        FirebaseApp.initializeApp(requireContext())
+
+//        db.collection("locations")
+//            .get()
+//            .addOnSuccessListener { result ->
+//                for (document in result) {
+//                    Log.d(TAG, "${document.id} => ${document.data}")
+//                }
+//            }
+//            .addOnFailureListener { exception ->
+//                Log.w(TAG, "Error getting documents.", exception)
+//            }
+
 
 // recycler view with locations list
 
-val locations = Repository().locations
-
-        val recyclerView = binding.locationListRV
-
-        recyclerView.layoutManager = LinearLayoutManager(context)
-
-        recyclerView.setHasFixedSize(true)
-
-        val itemClickedCallback: (Location) -> Unit = {
-            viewModel.selectLocation(it)
+        val itemClickedCallback: (Location) -> Unit = { location ->
+            viewModel.selectLocation(location)
 
             findNavController().navigate(R.id.locationFragment)
         }
+
+        val recyclerView = binding.locationListRV
 
         viewModel.locationList.observe(viewLifecycleOwner) {
             recyclerView.adapter = LocationAdapter(it, itemClickedCallback)
         }
 
-        viewModel.currentLocation.observe(viewLifecycleOwner) {
-
-        }
-
-        val adapter = LocationAdapter(locations, itemClickedCallback )
-        binding.locationListRV.adapter = adapter
-
-        binding.addLocationFAB.setOnClickListener{
+        binding.addLocationFAB.setOnClickListener {
             it.findNavController().navigate(R.id.addLocationFragment)
         }
     }
