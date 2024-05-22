@@ -5,34 +5,44 @@ import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.drawable.BitmapDrawable
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
+import android.widget.Toast
 import androidx.annotation.DrawableRes
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import com.mapbox.geojson.Point
 import com.mapbox.maps.CameraOptions
 import com.mapbox.maps.MapView
 import com.mapbox.maps.Style
 import com.mapbox.maps.plugin.annotation.AnnotationConfig
 import com.mapbox.maps.plugin.annotation.annotations
+import com.mapbox.maps.plugin.annotation.generated.OnPointAnnotationClickListener
+import com.mapbox.maps.plugin.annotation.generated.PointAnnotation
 import com.mapbox.maps.plugin.annotation.generated.PointAnnotationManager
 import com.mapbox.maps.plugin.annotation.generated.PointAnnotationOptions
 import com.mapbox.maps.plugin.annotation.generated.createPointAnnotationManager
+import com.mapbox.maps.viewannotation.ViewAnnotationManager
+import com.mapbox.maps.viewannotation.annotatedLayerFeature
+import com.mapbox.maps.viewannotation.viewAnnotationOptions
 import de.syntax_institut.mvvm.R
 import de.syntax_institut.mvvm.SharedViewModel
 import de.syntax_institut.mvvm.data.Repository
 import de.syntax_institut.mvvm.data.model.Location
 import de.syntax_institut.mvvm.databinding.FragmentHomeBinding
 
-
 class HomeFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding
     private lateinit var mapView: MapView
     private var pointAnnotationManager: PointAnnotationManager? = null
+    private var viewAnnotationManager: ViewAnnotationManager? = null
     val locations = Repository().locations
+    private val viewModel: SharedViewModel by activityViewModels()
 
 
     override fun onCreateView(
@@ -45,7 +55,6 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
 
         // Create a map programmatically and set the initial camera
         mapView = MapView(requireContext())
@@ -60,7 +69,6 @@ class HomeFragment : Fragment() {
         // Add the map view to the activity (you can also add it to other views as a child)
         binding.root.addView(mapView)
 
-
         val customStyleJson = "mapbox://styles/laraujo/clv5ohc8f00ky01quh8nqhlre"
 
         mapView.mapboxMap.loadStyle(customStyleJson) {
@@ -70,23 +78,47 @@ class HomeFragment : Fragment() {
     }
 
     private fun initializeAnnotationManager() {
-        val annotationConfig = AnnotationConfig()
+        val annotationConfig = AnnotationConfig(layerId = "location-layer")
         pointAnnotationManager = mapView.annotations.createPointAnnotationManager(annotationConfig)
+        viewAnnotationManager = mapView.viewAnnotationManager
+
+        // Set the click listener for point annotations
+        pointAnnotationManager?.addClickListener(OnPointAnnotationClickListener { annotation ->
+            onPointAnnotationClick(annotation)
+            true
+        })
+    }
+
+    private fun onPointAnnotationClick(annotation: PointAnnotation) {
+        val location = locations.find {
+            it.latitude == annotation.point.latitude() && it.longitude == annotation.point.longitude()
+        }
+
+        location?.let {
+            Log.d("clickedLocation", location.name)
+            viewModel.selectLocation(it)
+            findNavController().navigate(R.id.locationFragment)
+        }
+
     }
 
     private fun addLocationMarkers() {
         locations.forEach { location ->
             val point = Point.fromLngLat(location.longitude, location.latitude)
-            val pointAnnotationOptions = bitmapFromDrawableRes(requireContext(), R.drawable.baseline_add_location_24)?.let {
+            val pointAnnotationOptions = bitmapFromDrawableRes(
+                requireContext(),
+                R.drawable.baseline_add_location_alt_24
+            )?.let {
                 PointAnnotationOptions()
                     .withPoint(point)
                     .withIconImage(it)
                     .withTextField(location.name)
-                    .withTextOffset(listOf(0.0, -1.5))
+                    .withTextOffset(listOf(0.0, -2.5))
                     .withTextColor("#FFFFFF")
             }
+
             if (pointAnnotationOptions != null) {
-                pointAnnotationManager?.create(pointAnnotationOptions)
+                val pointAnnotation = pointAnnotationManager?.create(pointAnnotationOptions)
             }
         }
     }
