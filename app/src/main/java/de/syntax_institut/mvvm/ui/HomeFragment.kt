@@ -9,17 +9,15 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import android.widget.Toast
 import androidx.annotation.DrawableRes
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.mapbox.geojson.Point
 import com.mapbox.maps.CameraOptions
 import com.mapbox.maps.MapView
-import com.mapbox.maps.Style
 import com.mapbox.maps.plugin.annotation.AnnotationConfig
 import com.mapbox.maps.plugin.annotation.annotations
 import com.mapbox.maps.plugin.annotation.generated.OnPointAnnotationClickListener
@@ -28,12 +26,9 @@ import com.mapbox.maps.plugin.annotation.generated.PointAnnotationManager
 import com.mapbox.maps.plugin.annotation.generated.PointAnnotationOptions
 import com.mapbox.maps.plugin.annotation.generated.createPointAnnotationManager
 import com.mapbox.maps.viewannotation.ViewAnnotationManager
-import com.mapbox.maps.viewannotation.annotatedLayerFeature
-import com.mapbox.maps.viewannotation.viewAnnotationOptions
 import de.syntax_institut.mvvm.R
 import de.syntax_institut.mvvm.SharedViewModel
 import de.syntax_institut.mvvm.data.Repository
-import de.syntax_institut.mvvm.data.model.Location
 import de.syntax_institut.mvvm.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment() {
@@ -56,17 +51,15 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Create a map programmatically and set the initial camera
         mapView = MapView(requireContext())
         mapView.mapboxMap.setCamera(
             CameraOptions.Builder()
                 .center(Point.fromLngLat(13.4247, 52.5072))
                 .pitch(0.0)
-                .zoom(11.0)
+                .zoom(12.0)
                 .bearing(0.0)
                 .build()
         )
-        // Add the map view to the activity (you can also add it to other views as a child)
         binding.root.addView(mapView)
 
         val customStyleJson = "mapbox://styles/laraujo/clv5ohc8f00ky01quh8nqhlre"
@@ -75,6 +68,12 @@ class HomeFragment : Fragment() {
             initializeAnnotationManager()
             addLocationMarkers()
         }
+
+        binding.addLocationFAB.setOnClickListener{
+            findNavController().navigate(R.id.addLocationFragment)
+        }
+
+
     }
 
     private fun initializeAnnotationManager() {
@@ -82,7 +81,6 @@ class HomeFragment : Fragment() {
         pointAnnotationManager = mapView.annotations.createPointAnnotationManager(annotationConfig)
         viewAnnotationManager = mapView.viewAnnotationManager
 
-        // Set the click listener for point annotations
         pointAnnotationManager?.addClickListener(OnPointAnnotationClickListener { annotation ->
             onPointAnnotationClick(annotation)
             true
@@ -107,7 +105,7 @@ class HomeFragment : Fragment() {
             val point = Point.fromLngLat(location.longitude, location.latitude)
             val pointAnnotationOptions = bitmapFromDrawableRes(
                 requireContext(),
-                R.drawable.baseline_add_location_alt_24
+                R.drawable.baseline_add_location_24
             )?.let {
                 PointAnnotationOptions()
                     .withPoint(point)
