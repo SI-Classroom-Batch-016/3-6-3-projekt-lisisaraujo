@@ -36,8 +36,8 @@ class LocationAdapter(
         val binding = holder.binding
 
         binding.locationDetailsCardLocationNameTV.text = location.name
-        binding.locationDetailsLocationTypeTV.text = location.type
-        binding.locationDetailsLocationAddressTV.text = location.address
+//        binding.locationDetailsLocationTypeTV.text = location.type
+//        binding.locationDetailsLocationAddressTV.text = location.address
 
         binding.locationDetailLocationCardCV.setOnClickListener {
             itemClickedCallback(location)

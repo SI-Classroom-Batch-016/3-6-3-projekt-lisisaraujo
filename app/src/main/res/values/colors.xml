@@ -6,8 +6,11 @@
     <color name="primary_day">#FF6B6B</color>
     <color name="background_day">#A6A6A6</color>
     <color name="secondary_day">#6B9FFF</color>
+    <color name="transparent_bg">#009FFF00</color>
 
-// night mode
+
+
+    // night mode
 
     <color name="primary_night">#FF6B6B</color>
     <color name="background_night">#2D2D2D</color>

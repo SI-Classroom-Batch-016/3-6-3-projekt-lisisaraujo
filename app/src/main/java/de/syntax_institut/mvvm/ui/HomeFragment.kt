@@ -1,105 +1,122 @@
 package de.syntax_institut.mvvm.ui
 
+import android.content.Context
+import android.graphics.Bitmap
+import android.graphics.Canvas
+import android.graphics.drawable.BitmapDrawable
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
+import android.widget.TextView
+import androidx.annotation.DrawableRes
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.firebase.Firebase
-import com.google.firebase.FirebaseApp
-import com.google.firebase.firestore.firestore
 import com.mapbox.geojson.Point
 import com.mapbox.maps.CameraOptions
 import com.mapbox.maps.MapView
+import com.mapbox.maps.plugin.annotation.AnnotationConfig
+import com.mapbox.maps.plugin.annotation.annotations
+import com.mapbox.maps.plugin.annotation.generated.PointAnnotationManager
+import com.mapbox.maps.plugin.annotation.generated.PointAnnotationOptions
+import com.mapbox.maps.plugin.annotation.generated.createPointAnnotationManager
+import com.mapbox.maps.viewannotation.ViewAnnotationManager
+import com.mapbox.maps.viewannotation.annotatedLayerFeature
+import com.mapbox.maps.viewannotation.geometry
 import de.syntax_institut.mvvm.R
 import de.syntax_institut.mvvm.SharedViewModel
-import de.syntax_institut.mvvm.adapter.LocationAdapter
 import de.syntax_institut.mvvm.data.Repository
 import de.syntax_institut.mvvm.data.model.Location
 import de.syntax_institut.mvvm.databinding.FragmentHomeBinding
+import com.mapbox.maps.viewannotation.viewAnnotationOptions
 
 
 class HomeFragment : Fragment() {
-    val TAG = "HomeFragment"
     private lateinit var binding: FragmentHomeBinding
-    private val viewModel: SharedViewModel by activityViewModels()
     private lateinit var mapView: MapView
+    private var pointAnnotationManager: PointAnnotationManager? = null
+    val locations = Repository().locations
+    val customStyleJson = "mapbox://styles/laraujo/clv5ohc8f00ky01quh8nqhlre"
+    private var viewAnnotationManager: ViewAnnotationManager? = null
 
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?,
+        savedInstanceState: Bundle?
     ): View {
         binding = FragmentHomeBinding.inflate(layoutInflater)
         return binding.root
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // Create a map programmatically and set the initial camera
+        mapView = MapView(requireContext())
+        binding.root.addView(mapView)
 
-//        // Create a map programmatically and set the initial camera
-//        mapView = MapView(requireContext())
-//        mapView.mapboxMap.setCamera(
-//            CameraOptions.Builder()
-//                .center(Point.fromLngLat(13.4247, 52.5072))
-//                .pitch(0.0)
-//                .zoom(11.0)
-//                .bearing(0.0)
-//                .build()
-//        )
-//
-//        // Add the map view to the activity (you can also add it to other views as a child)
-//        binding.root.addView(mapView)
-//
-//        binding.addLocationFAB.setOnClickListener{
-//
-//            it.findNavController().navigate(R.id.addLocationFragment)
-//        }
-//
-//        val customStyleJson = "mapbox://styles/laraujo/clv5ohc8f00ky01quh8nqhlre"
-//        mapView.mapboxMap.loadStyle(customStyleJson)
+        mapView.mapboxMap.setCamera(
+            CameraOptions.Builder()
+                .center(Point.fromLngLat(13.4247, 52.5072))
+                .pitch(0.0)
+                .zoom(11.0)
+                .bearing(0.0)
+                .build()
+        )
+        // Add the map view to the activity (you can also add it to other views as a child)
 
-        // FIREBASE CONNECT
-//        val db = Firebase.firestore
-//        FirebaseApp.initializeApp(requireContext())
-
-//        db.collection("locations")
-//            .get()
-//            .addOnSuccessListener { result ->
-//                for (document in result) {
-//                    Log.d(TAG, "${document.id} => ${document.data}")
-//                }
-//            }
-//            .addOnFailureListener { exception ->
-//                Log.w(TAG, "Error getting documents.", exception)
-//            }
-
-
-// recycler view with locations list
-
-        val itemClickedCallback: (Location) -> Unit = { location ->
-            viewModel.selectLocation(location)
-
-            findNavController().navigate(R.id.locationFragment)
+        mapView.mapboxMap.loadStyle(customStyleJson) {
+            initializeAnnotationManager()
+            addLocationMarkers()
         }
 
-        val recyclerView = binding.locationListRV
 
-        viewModel.locationList.observe(viewLifecycleOwner) {
-            recyclerView.adapter = LocationAdapter(it, itemClickedCallback)
-        }
+    }
 
-        binding.addLocationFAB.setOnClickListener {
-            it.findNavController().navigate(R.id.addLocationFragment)
-        }
+    private fun initializeAnnotationManager() {
+        val annotationConfig = AnnotationConfig(layerId = "location-layer")
+        viewAnnotationManager = mapView.viewAnnotationManager
     }
 
 
+    private fun addLocationMarkers() {
+        locations.forEach { location ->
+            val point = Point.fromLngLat(location.longitude, location.latitude)
+            Log.d("LocationLoaded", location.name)
+
+            // Add the view annotation
+            val viewAnnotation = viewAnnotationManager?.addViewAnnotation(
+                resId = R.layout.location_marker,
+                options = viewAnnotationOptions {
+                    geometry(point)
+                }
+            )
+            // Set the location name in the ViewAnnotation
+            viewAnnotation?.findViewById<TextView>(R.id.locationNameTV)?.text = location.name
+            viewAnnotation?.findViewById<LinearLayout>(R.id.locationItem)?.setOnClickListener{
+                Log.d("LocationOnClick", location.name)
+            }
+        }
+    }
+
+//    private fun bitmapFromDrawableRes(context: Context, @DrawableRes resourceId: Int): Bitmap? {
+//        val drawable = AppCompatResources.getDrawable(context, resourceId)
+//        return if (drawable is BitmapDrawable) {
+//            drawable.bitmap
+//        } else {
+//            val bitmap = Bitmap.createBitmap(
+//                drawable?.intrinsicWidth ?: 0,
+//                drawable?.intrinsicHeight ?: 0,
+//                Bitmap.Config.ARGB_8888
+//            )
+//            val canvas = Canvas(bitmap)
+//            drawable?.setBounds(0, 0, canvas.width, canvas.height)
+//            drawable?.draw(canvas)
+//            bitmap
+//        }
+//    }
 }
+
