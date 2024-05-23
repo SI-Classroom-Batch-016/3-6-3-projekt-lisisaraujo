@@ -7,7 +7,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import de.syntax_institut.mvvm.R
 import de.syntax_institut.mvvm.SharedViewModel
+import de.syntax_institut.mvvm.adapter.CommentAdapter
+import de.syntax_institut.mvvm.adapter.LocationAdapter
+import de.syntax_institut.mvvm.data.model.Comment
+import de.syntax_institut.mvvm.data.model.Location
 import de.syntax_institut.mvvm.databinding.FragmentLocationBinding
 
 class LocationFragment : Fragment() {
@@ -25,6 +32,8 @@ class LocationFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val comments = viewModel.commentsList.value
+
         viewModel.currentLocation.observe(viewLifecycleOwner) { currentLocation ->
             binding.locationDetailsLocationNameTV.text = currentLocation.name
 //            binding.locationDetailsLocationAddressTV.text = currentLocation.address
@@ -34,6 +43,25 @@ class LocationFragment : Fragment() {
 
         binding.locationDetailsBackBTN.setOnClickListener {
             it.findNavController().navigateUp()
+        }
+
+        binding.addCommentFAB.setOnClickListener {
+            it.findNavController().navigate(R.id.addCommentFragment)
+        }
+
+
+        val recyclerView = binding.commentCardRV
+
+//        viewModel.commentsList.observe(viewLifecycleOwner) { comments ->
+//
+//        }
+
+        if (comments != null) {
+            val filteredComments = comments.filter { comment ->
+                comment.location == viewModel.currentLocation.value?.name
+            }.toMutableList()
+            recyclerView.adapter =
+                viewModel.currentLocation.value?.let { CommentAdapter(filteredComments, it.name) }
         }
     }
 }

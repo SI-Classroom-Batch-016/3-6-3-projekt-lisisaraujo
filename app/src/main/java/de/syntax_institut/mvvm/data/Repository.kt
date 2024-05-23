@@ -1,5 +1,6 @@
 package de.syntax_institut.mvvm.data
 
+import de.syntax_institut.mvvm.data.model.Comment
 import de.syntax_institut.mvvm.data.model.Location
 
 class Repository {
@@ -7,6 +8,11 @@ class Repository {
     val locations: MutableList<Location>
         get() {
             return loadLocations()
+        }
+
+    val comments: MutableList<Comment>
+        get() {
+            return loadComments()
         }
 
     private fun loadLocations(): MutableList<Location> {
@@ -53,7 +59,64 @@ class Repository {
             Location("Ernst-Thälmann park (cruising)", 52.5386387, 13.4312424, "Cruising"),
             Location("Oyoun", 13.4206611, 52.4838959, "Community-Center")
         )
+    }
 
-
+    private fun loadComments(): MutableList<Comment> {
+        return mutableListOf(
+            Comment(
+                "23.05.2024",
+                "Kfetisch",
+                "first comment",
+                30,
+                mutableListOf("gay", "queer"),
+                mutableListOf("cis woman", "gender fluid"),
+                true
+            ),
+            Comment(
+                "23.05.2024",
+                "Kfetisch",
+                "first comment",
+                30,
+                mutableListOf("gay", "queer"),
+                mutableListOf("cis woman", "gender fluid"),
+                true
+            ),
+            Comment(
+                "23.05.2024",
+                "Kfetisch",
+                "first comment",
+                30,
+                mutableListOf("gay", "queer"),
+                mutableListOf("cis woman", "gender fluid"),
+                true
+            ),
+            Comment(
+                "23.05.2024",
+                "location",
+                "first comment",
+                30,
+                mutableListOf("gay", "queer"),
+                mutableListOf("cis woman", "gender fluid"),
+                true
+            ),
+            Comment(
+                "23.05.2024",
+                "location",
+                "first comment",
+                30,
+                mutableListOf("gay", "queer"),
+                mutableListOf("cis woman", "gender fluid"),
+                true
+            ),
+            Comment(
+                "23.05.2024",
+                "location",
+                "first comment",
+                30,
+                mutableListOf("gay", "queer"),
+                mutableListOf("cis woman", "gender fluid"),
+                true
+            )
+        )
     }
 }

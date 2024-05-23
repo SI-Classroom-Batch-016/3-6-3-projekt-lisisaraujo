@@ -1,5 +1,6 @@
 package de.syntax_institut.mvvm.ui
 
+//import RetrofitInstance
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.Canvas
@@ -9,6 +10,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.annotation.DrawableRes
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.fragment.app.Fragment
@@ -28,8 +30,15 @@ import com.mapbox.maps.plugin.annotation.generated.createPointAnnotationManager
 import com.mapbox.maps.viewannotation.ViewAnnotationManager
 import de.syntax_institut.mvvm.R
 import de.syntax_institut.mvvm.SharedViewModel
+import de.syntax_institut.mvvm.adapter.LocationAdapter
 import de.syntax_institut.mvvm.data.Repository
+import de.syntax_institut.mvvm.data.model.Location
+import de.syntax_institut.mvvm.databinding.FragmentAddCommentBinding
 import de.syntax_institut.mvvm.databinding.FragmentHomeBinding
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class HomeFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding
@@ -39,12 +48,11 @@ class HomeFragment : Fragment() {
     val locations = Repository().locations
     private val viewModel: SharedViewModel by activityViewModels()
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentHomeBinding.inflate(layoutInflater)
+        binding = FragmentHomeBinding.inflate(layoutInflater, container, false)
         return binding.root
     }
 
@@ -69,10 +77,9 @@ class HomeFragment : Fragment() {
             addLocationMarkers()
         }
 
-        binding.addLocationFAB.setOnClickListener{
+        binding.addLocationFAB.setOnClickListener {
             findNavController().navigate(R.id.addLocationFragment)
         }
-
 
     }
 
@@ -97,7 +104,6 @@ class HomeFragment : Fragment() {
             viewModel.selectLocation(it)
             findNavController().navigate(R.id.locationFragment)
         }
-
     }
 
     private fun addLocationMarkers() {
@@ -116,7 +122,7 @@ class HomeFragment : Fragment() {
             }
 
             if (pointAnnotationOptions != null) {
-                val pointAnnotation = pointAnnotationManager?.create(pointAnnotationOptions)
+                pointAnnotationManager?.create(pointAnnotationOptions)
             }
         }
     }
@@ -137,4 +143,28 @@ class HomeFragment : Fragment() {
             bitmap
         }
     }
+
+        // recycler view with locations list
+
+//        val itemClickedCallback: (Location) -> Unit = { location ->
+//            viewModel.selectLocation(location)
+//
+//            findNavController().navigate(R.id.locationFragment)
+//        }
+//
+//        val recyclerView = binding.locationListRV
+//
+//        viewModel.locationList.observe(viewLifecycleOwner) {
+//            recyclerView.adapter = LocationAdapter(it, itemClickedCallback)
+//        }
+//
+//        binding.addLocationFAB.setOnClickListener {
+//            it.findNavController().navigate(R.id.addLocationFragment)
+//        }
+//    }
+
+//    val geocodingPlugin = MapboxGeocoding.builder()
+//        .accessToken(YOUR_MAPBOX_ACCESS_TOKEN)
+//        .build()
+
 }

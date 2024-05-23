@@ -20,4 +20,9 @@
         android:name="de.syntax_institut.mvvm.ui.AddLocationFragment"
         android:label="fragment_add_location"
         tools:layout="@layout/fragment_add_location" />
+    <fragment
+        android:id="@+id/addCommentFragment"
+        android:name="de.syntax_institut.mvvm.ui.AddCommentFragment"
+        android:label="fragment_add_comment"
+        tools:layout="@layout/fragment_add_comment" />
 </navigation>
