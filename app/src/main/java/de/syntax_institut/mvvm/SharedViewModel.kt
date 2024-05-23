@@ -35,7 +35,16 @@ class SharedViewModel : ViewModel() {
         _currentLocation.value = it
     }
 
-    fun addComment(comment: Comment){
-        commentsList.value?.add(comment)
+    fun addComment(comment: Comment) {
+        _commentsList.value?.add(comment)
+    }
+
+    fun filterByAge(age: String) {
+        val filteredCommentsList: MutableList<Comment> = if (age.equals("All")) {
+            comments
+        } else {
+            comments.filter { it.age.equals(age) }.toMutableList()
+        }
+        _commentsList.value = filteredCommentsList
     }
 }

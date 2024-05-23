@@ -12,6 +12,7 @@ import de.syntax_institut.mvvm.data.model.Comment
 import de.syntax_institut.mvvm.data.model.Location
 import de.syntax_institut.mvvm.databinding.CommentCardBinding
 import de.syntax_institut.mvvm.databinding.LocationDetailsBinding
+import kotlinx.coroutines.selects.select
 
 class CommentAdapter(
     private val comments: MutableList<Comment>,
@@ -39,6 +40,27 @@ class CommentAdapter(
         val binding = holder.binding
 
         binding.commentTV.text = comment.comment
+
+        val tagBuilder = StringBuilder()
+
+        if (comment.age != "select") {
+            tagBuilder.append("#${comment.age} ")
+        }
+
+        if (comment.gender != "select") {
+            tagBuilder.append("#${comment.gender} ")
+        }
+
+        if (comment.sexualOrientation != "select") {
+            tagBuilder.append("#${comment.sexualOrientation} ")
+        }
+
+        if (comment.isBipoc) {
+            tagBuilder.append("#BIPOC ")
+        }
+
+        val tagsString = tagBuilder.toString().trim()
+        binding.tagsTV.text = if (tagsString.isNotEmpty()) tagsString else ""
 
 //        binding.commentCV.setOnClickListener {
 //            itemClickedCallback(comment)

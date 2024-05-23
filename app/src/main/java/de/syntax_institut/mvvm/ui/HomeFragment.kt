@@ -70,7 +70,7 @@ class HomeFragment : Fragment() {
         )
         binding.root.addView(mapView)
 
-        val customStyleJson = "mapbox://styles/laraujo/clv5ohc8f00ky01quh8nqhlre"
+        val customStyleJson = "mapbox://styles/laraujo/clwjaz9ai00tb01qr25vu79fo"
 
         mapView.mapboxMap.loadStyle(customStyleJson) {
             initializeAnnotationManager()
