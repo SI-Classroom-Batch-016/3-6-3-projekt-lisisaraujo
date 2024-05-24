@@ -1,6 +1,5 @@
 package de.syntax_institut.mvvm.ui
 
-//import RetrofitInstance
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.Canvas
@@ -10,7 +9,6 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.annotation.DrawableRes
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.fragment.app.Fragment
@@ -30,22 +28,14 @@ import com.mapbox.maps.plugin.annotation.generated.createPointAnnotationManager
 import com.mapbox.maps.viewannotation.ViewAnnotationManager
 import de.syntax_institut.mvvm.R
 import de.syntax_institut.mvvm.SharedViewModel
-import de.syntax_institut.mvvm.adapter.LocationAdapter
-import de.syntax_institut.mvvm.data.Repository
 import de.syntax_institut.mvvm.data.model.Location
-import de.syntax_institut.mvvm.databinding.FragmentAddCommentBinding
 import de.syntax_institut.mvvm.databinding.FragmentHomeBinding
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 class HomeFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding
     private lateinit var mapView: MapView
     private var pointAnnotationManager: PointAnnotationManager? = null
     private var viewAnnotationManager: ViewAnnotationManager? = null
-    val locations = Repository().locations
     private val viewModel: SharedViewModel by activityViewModels()
 
     override fun onCreateView(
@@ -59,28 +49,38 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        mapView = MapView(requireContext())
-        mapView.mapboxMap.setCamera(
-            CameraOptions.Builder()
-                .center(Point.fromLngLat(13.4247, 52.5072))
-                .pitch(0.0)
-                .zoom(12.0)
-                .bearing(0.0)
-                .build()
-        )
-        binding.root.addView(mapView)
+        setupMapView()
+        setupListeners()
+        observeLocationList()
 
-        val customStyleJson = "mapbox://styles/laraujo/clwjaz9ai00tb01qr25vu79fo"
+    }
 
-        mapView.mapboxMap.loadStyle(customStyleJson) {
-            initializeAnnotationManager()
-            addLocationMarkers()
+    private fun setupMapView() {
+        mapView = MapView(requireContext()).apply {
+            mapboxMap.setCamera(
+                CameraOptions.Builder()
+                    .center(Point.fromLngLat(13.4247, 52.5072))
+                    .pitch(0.0)
+                    .zoom(12.0)
+                    .bearing(0.0)
+                    .build()
+            )
+            binding.root.addView(this)
+            mapboxMap.loadStyle("mapbox://styles/laraujo/clwjaz9ai00tb01qr25vu79fo") {
+                initializeAnnotationManager()
+                observeLocationList()
+            }
         }
+    }
 
+    private fun setupListeners() {
         binding.addLocationFAB.setOnClickListener {
             findNavController().navigate(R.id.addLocationFragment)
         }
 
+        binding.filterButton.setOnClickListener {
+            it.findNavController().navigate(R.id.filterLocationsFragment)
+        }
     }
 
     private fun initializeAnnotationManager() {
@@ -95,7 +95,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun onPointAnnotationClick(annotation: PointAnnotation) {
-        val location = locations.find {
+        val location = viewModel.locationList.value?.find {
             it.latitude == annotation.point.latitude() && it.longitude == annotation.point.longitude()
         }
 
@@ -106,18 +106,18 @@ class HomeFragment : Fragment() {
         }
     }
 
-    private fun addLocationMarkers() {
+    private fun addLocationMarkers(locations: List<Location>) {
         locations.forEach { location ->
             val point = Point.fromLngLat(location.longitude, location.latitude)
             val pointAnnotationOptions = bitmapFromDrawableRes(
                 requireContext(),
-                R.drawable.baseline_add_location_24
+                viewModel.setMapIcon(location)
             )?.let {
                 PointAnnotationOptions()
                     .withPoint(point)
                     .withIconImage(it)
                     .withTextField(location.name)
-                    .withTextOffset(listOf(0.0, -2.5))
+                    .withTextOffset(listOf(0.0, -1.5))
                     .withTextColor("#FFFFFF")
             }
 
@@ -144,27 +144,9 @@ class HomeFragment : Fragment() {
         }
     }
 
-        // recycler view with locations list
-
-//        val itemClickedCallback: (Location) -> Unit = { location ->
-//            viewModel.selectLocation(location)
-//
-//            findNavController().navigate(R.id.locationFragment)
-//        }
-//
-//        val recyclerView = binding.locationListRV
-//
-//        viewModel.locationList.observe(viewLifecycleOwner) {
-//            recyclerView.adapter = LocationAdapter(it, itemClickedCallback)
-//        }
-//
-//        binding.addLocationFAB.setOnClickListener {
-//            it.findNavController().navigate(R.id.addLocationFragment)
-//        }
-//    }
-
-//    val geocodingPlugin = MapboxGeocoding.builder()
-//        .accessToken(YOUR_MAPBOX_ACCESS_TOKEN)
-//        .build()
-
+    private fun observeLocationList() {
+        viewModel.locationList.observe(viewLifecycleOwner) { locations ->
+            addLocationMarkers(locations)
+        }
+    }
 }

@@ -359,8 +359,7 @@ class Repository {
                 "queer",
                 "gender fluid",
                 true
-            )
-            ,
+            ),
             Comment(
                 "23.05.2024",
                 "Roses",
@@ -747,12 +746,13 @@ class Repository {
                 "gay",
                 "cis woman",
                 true
-            ), Comment(
+            ),
+            Comment(
                 "23.05.2024",
                 "WOOF Bar (only men)",
                 "Always a fun time at WOOF Bar.",
                 "32",
-                "queer","cis man",
+                "queer", "cis man",
                 true
             ),
             Comment(
@@ -760,7 +760,7 @@ class Repository {
                 "WOOF Bar (only men)",
                 "Great drinks and friendly staff.",
                 "34",
-           "inclusive", "cis men",
+                "inclusive", "cis men",
                 true
             ),
             Comment(
@@ -768,7 +768,7 @@ class Repository {
                 "TOM'S Bar (only men)",
                 "Legendary bar with a great atmosphere.",
                 "29",
-                "queer","cis man",
+                "queer", "cis man",
                 true
             ),
             Comment(
@@ -776,7 +776,7 @@ class Repository {
                 "TOM'S Bar (only men)",
                 "Always a good time at TOM'S Bar.",
                 "33",
-            "gay", "cis man",
+                "gay", "cis man",
                 true
             ),
             Comment(
@@ -784,7 +784,7 @@ class Repository {
                 "TOM'S Bar (only men)",
                 "Great place for meeting new people.",
                 "30",
-                "queer","cis man",
+                "queer", "cis man",
                 true
             ),
             Comment(
@@ -792,7 +792,7 @@ class Repository {
                 "TOM'S Bar (only men)",
                 "Love the music and atmosphere.",
                 "28",
-            "gay", "cis man",
+                "gay", "cis man",
                 true
             ),
             Comment(
@@ -800,7 +800,7 @@ class Repository {
                 "TOM'S Bar (only men)",
                 "Always a fun crowd here.",
                 "32",
-                "queer","cis man",
+                "queer", "cis man",
                 true
             ),
             Comment(
@@ -808,7 +808,7 @@ class Repository {
                 "BarbieBar",
                 "Fun and colorful decor.",
                 "34",
-               "queer", "gender fluid",
+                "queer", "gender fluid",
                 true
             ),
             Comment(
@@ -816,7 +816,7 @@ class Repository {
                 "BarbieBar",
                 "Great place for a themed night out.",
                 "29",
-            "non binary", "queer",
+                "non binary", "queer",
                 true
             ),
             Comment(
@@ -824,7 +824,7 @@ class Repository {
                 "BarbieBar",
                 "Love the unique atmosphere.",
                 "32",
-              "gay", "trans man",
+                "gay", "trans man",
                 true
             ),
             Comment(
@@ -832,7 +832,7 @@ class Repository {
                 "BarbieBar",
                 "Always a blast at BarbieBar.",
                 "28",
-            "gay", "cis woman",
+                "gay", "cis woman",
                 true
             ),
             Comment(
@@ -840,7 +840,7 @@ class Repository {
                 "To Be Free",
                 "Relaxing spot with great drinks.",
                 "33",
-                  "queer", "trans woman",
+                "queer", "trans woman",
                 true
             ),
             Comment(
@@ -848,7 +848,7 @@ class Repository {
                 "To Be Free",
                 "Love the chill vibe here.",
                 "30",
-               "queer", "gender fluid",
+                "queer", "gender fluid",
                 true
             ),
             Comment(
@@ -856,7 +856,7 @@ class Repository {
                 "To Be Free",
                 "Perfect for a quiet evening out.",
                 "29",
-            "non binary", "queer",
+                "non binary", "queer",
                 true
             ),
             Comment(
@@ -864,7 +864,7 @@ class Repository {
                 "To Be Free",
                 "Friendly staff and great service.",
                 "32",
-              "gay", "trans man",
+                "gay", "trans man",
                 true
             ),
             Comment(
@@ -872,7 +872,7 @@ class Repository {
                 "Besenkammer",
                 "Unique spot with a great vibe.",
                 "34",
-            "gay", "cis woman",
+                "gay", "cis woman",
                 true
             ),
             Comment(
@@ -880,7 +880,7 @@ class Repository {
                 "Besenkammer",
                 "Love the cozy atmosphere.",
                 "32",
-                  "queer", "trans woman",
+                "queer", "trans woman",
                 true
             ),
             Comment(
@@ -888,7 +888,7 @@ class Repository {
                 "Besenkammer",
                 "Great place for a quiet drink.",
                 "29",
-               "queer", "gender fluid",
+                "queer", "gender fluid",
                 true
             ),
             Comment(
@@ -896,7 +896,7 @@ class Repository {
                 "Besenkammer",
                 "Perfect for a low-key night out.",
                 "32",
-            "non binary", "queer",
+                "non binary", "queer",
                 true
             ),
             Comment(
@@ -904,7 +904,7 @@ class Repository {
                 "Besenkammer",
                 "Always a friendly crowd.",
                 "30",
-              "gay", "trans man",
+                "gay", "trans man",
                 true
             ),
             Comment(
@@ -912,7 +912,7 @@ class Repository {
                 "OYA",
                 "Love the eclectic decor.",
                 "29",
-            "gay", "cis woman",
+                "gay", "cis woman",
                 true
             ),
             Comment(
@@ -920,7 +920,7 @@ class Repository {
                 "OYA",
                 "Always a fun night out at OYA.",
                 "30",
-                  "queer", "trans woman",
+                "queer", "trans woman",
                 true
             ),
             Comment(
@@ -928,7 +928,7 @@ class Repository {
                 "OYA",
                 "Great place to meet new people.",
                 "32",
-               "queer", "gender fluid",
+                "queer", "gender fluid",
                 true
             ),
             Comment(
@@ -936,7 +936,7 @@ class Repository {
                 "OYA",
                 "Perfect for a night out with friends.",
                 "28",
-            "non binary", "queer",
+                "non binary", "queer",
                 true
             ),
             Comment(
@@ -944,7 +944,7 @@ class Repository {
                 "Große Freiheit",
                 "Fantastic club with a great atmosphere.",
                 "34",
-            "gay", "cis woman",
+                "gay", "cis woman",
                 true
             ),
             Comment(
@@ -952,7 +952,7 @@ class Repository {
                 "Große Freiheit",
                 "Always a good time here.",
                 "32",
-                  "queer", "trans woman",
+                "queer", "trans woman",
                 true
             ),
             Comment(
@@ -962,7 +962,7 @@ class Repository {
                 "Große Freiheit",
                 "Great music and lively crowd.",
                 "29",
-               "queer", "gender fluid",
+                "queer", "gender fluid",
                 true
             ),
             Comment(
@@ -970,7 +970,7 @@ class Repository {
                 "Große Freiheit",
                 "Love the inclusive atmosphere.",
                 "32",
-            "non binary", "queer",
+                "non binary", "queer",
                 true
             ),
             Comment(
@@ -978,7 +978,7 @@ class Repository {
                 "Große Freiheit",
                 "Always a great night out here.",
                 "30",
-              "gay", "trans man",
+                "gay", "trans man",
                 true
             ),
             Comment(
@@ -994,7 +994,7 @@ class Repository {
                 "Rauschgold",
                 "Love the energy here.",
                 "33",
-             "queer", "non binary",
+                "queer", "non binary",
                 true
             ),
             Comment(
@@ -1002,7 +1002,7 @@ class Repository {
                 "Rauschgold",
                 "Fantastic place for a night out.",
                 "32",
-           "trans man", "inclusive",
+                "trans man", "inclusive",
                 true
             ),
             Comment(
@@ -1026,7 +1026,7 @@ class Repository {
                 "Heile Welt",
                 "Cozy place with a welcoming vibe.",
                 "32",
-               "queer", "gender fluid",
+                "queer", "gender fluid",
                 true
             ),
             Comment(
@@ -1034,7 +1034,7 @@ class Repository {
                 "Heile Welt",
                 "Great drinks and friendly staff.",
                 "32",
-                  "queer", "trans woman",
+                "queer", "trans woman",
                 true
             ),
             Comment(
@@ -1042,7 +1042,7 @@ class Repository {
                 "Heile Welt",
                 "Always a relaxing spot to hang out.",
                 "29",
-            "gay", "cis woman",
+                "gay", "cis woman",
                 true
             ),
             Comment(
@@ -1050,7 +1050,7 @@ class Repository {
                 "Heile Welt",
                 "Love the ambiance here.",
                 "28",
-             "queer", "gender fluid",
+                "queer", "gender fluid",
                 true
             ),
             Comment(
@@ -1058,7 +1058,7 @@ class Repository {
                 "Heile Welt",
                 "Great place for a chill night out.",
                 "30",
-              "gay", "trans man",
+                "gay", "trans man",
                 true
             ),
             Comment(
@@ -1066,9 +1066,729 @@ class Repository {
                 "Kfetisch",
                 "Great place for a chill night out.",
                 "30",
-              "gay", "trans man",
+                "gay", "trans man",
                 true
-            )
+            ),
+            Comment(
+                "23.05.2024",
+                "Kfetisch",
+                "Loved the edgy vibe and the inclusive crowd!",
+                "26-35",
+                "pansexual",
+                "non-binary",
+                true
+            ),
+            Comment(
+                "22.05.2024",
+                "Kfetisch",
+                "The drinks were a bit pricey, but the atmosphere made up for it.",
+                "36-45",
+                "lesbian",
+                "cisgender female",
+                false
+            ),
+            Comment(
+                "21.05.2024",
+                "Kfetisch",
+                "Not my usual scene, but I had a great time exploring something new!",
+                "19-25",
+                "bisexual",
+                "transgender male",
+                true
+            ),
+            Comment(
+                "20.05.2024",
+                "Kfetisch",
+                "The music was a bit too loud for my taste, but the staff was super friendly.",
+                "46-55",
+                "heterosexual",
+                "cisgender male",
+                false
+            ),
+            Comment(
+                "19.05.2024",
+                "Kfetisch",
+                "Loved the kinky vibes and the open-minded crowd!",
+                "26-35",
+                "queer",
+                "genderfluid",
+                true
+            ),
+            Comment(
+                "23.05.2024",
+                "Berghain",
+                "The music was incredible, and the energy was off the charts!",
+                "19-25",
+                "gay",
+                "cisgender male",
+                false
+            ),
+            Comment(
+                "22.05.2024",
+                "Berghain",
+                "Loved the industrial vibe and the diverse crowd!",
+                "36-45",
+                "pansexual",
+                "non-binary",
+                true
+            ),
+            Comment(
+                "21.05.2024",
+                "Berghain",
+                "The bouncers were a bit intimidating, but the experience was worth it!",
+                "26-35",
+                "bisexual",
+                "transgender female",
+                false
+            ),
+            Comment(
+                "20.05.2024",
+                "Berghain",
+                "The music was a bit too techno for my taste, but the atmosphere was electric!",
+                "46-55",
+                "lesbian",
+                "cisgender female",
+                true
+            ),
+            Comment(
+                "19.05.2024",
+                "Berghain",
+                "Legendary club! Lived up to the hype and then some!",
+                "26-35",
+                "queer",
+                "genderfluid",
+                false
+            ),
+            Comment(
+                "23.05.2024",
+                "About_blank",
+                "Loved the underground vibe and the friendly crowd!",
+                "19-25",
+                "bisexual",
+                "non-binary",
+                true
+            ),
+            Comment(
+                "22.05.2024",
+                "About_blank",
+                "The music was a bit too experimental for my taste, but the drinks were great!",
+                "36-45",
+                "gay",
+                "cisgender male",
+                false
+            ),
+            Comment(
+                "21.05.2024",
+                "About_blank",
+                "Loved the inclusive atmosphere and the diverse crowd!",
+                "26-35",
+                "pansexual",
+                "transgender female",
+                true
+            ),
+            Comment(
+                "20.05.2024",
+                "About_blank",
+                "The staff was a bit aloof, but the music was on point!",
+                "46-55",
+                "heterosexual",
+                "cisgender male",
+                false
+            ),
+            Comment(
+                "19.05.2024",
+                "About_blank",
+                "Loved the experimental vibe and the open-minded crowd!",
+                "26-35",
+                "queer",
+                "genderfluid",
+                true
+            ),
+            Comment(
+                "23.05.2024",
+                "SchwuZ",
+                "Loved the inclusive atmosphere and the friendly staff!",
+                "19-25",
+                "lesbian",
+                "cisgender female",
+                true
+            ),
+            Comment(
+                "22.05.2024",
+                "SchwuZ",
+                "The music was a bit too mainstream for my taste, but the drinks were great!",
+                "36-45",
+                "gay",
+                "cisgender male",
+                false
+            ),
+            Comment(
+                "21.05.2024",
+                "SchwuZ",
+                "Loved the diverse crowd and the open-minded vibe!",
+                "26-35",
+                "pansexual",
+                "non-binary",
+                true
+            ),
+            Comment(
+                "20.05.2024",
+                "SchwuZ",
+                "The staff was a bit rude, but the atmosphere made up for it!",
+                "46-55",
+                "bisexual",
+                "transgender male",
+                false
+            ),
+            Comment(
+                "19.05.2024",
+                "SchwuZ",
+                "Loved the inclusive vibes and the friendly crowd!",
+                "26-35",
+                "queer",
+                "genderfluid",
+                true
+            ),
+            Comment(
+                "23.05.2024",
+                "Lab.Oratory",
+                "Loved the experimental vibe and the diverse crowd!",
+                "19-25",
+                "pansexual",
+                "non-binary",
+                true
+            ),
+            Comment(
+                "22.05.2024",
+                "Lab.Oratory",
+                "The music was a bit too techno for my taste, but the drinks were great!",
+                "36-45",
+                "lesbian",
+                "cisgender female",
+                false
+            ),
+            Comment(
+                "21.05.2024",
+                "Lab.Oratory",
+                "Loved the inclusive atmosphere and the friendly staff!",
+                "26-35",
+                "gay",
+                "cisgender male",
+                true
+            ),
+            Comment(
+                "20.05.2024",
+                "Lab.Oratory",
+                "The staff was a bit aloof, but the music was on point!",
+                "46-55",
+                "bisexual",
+                "transgender female",
+                false
+            ),
+            Comment(
+                "19.05.2024",
+                "Lab.Oratory",
+                "Loved the experimental vibes and the open-minded crowd!",
+                "26-35",
+                "queer",
+                "genderfluid",
+                true
+            ),
+            Comment(
+                "23.05.2024",
+                "SO36",
+                "Loved the gritty vibe and the diverse crowd!",
+                "26-35",
+                "queer",
+                "genderfluid",
+                true
+            ),
+            Comment(
+                "22.05.2024",
+                "SO36",
+                "The music was a bit too punk for my taste, but the drinks were great!",
+                "36-45",
+                "gay",
+                "cisgender male",
+                false
+            ),
+            Comment(
+                "21.05.2024",
+                "SO36",
+                "Loved the inclusive atmosphere and the friendly staff!",
+                "19-25",
+                "pansexual",
+                "non-binary",
+                true
+            ),
+            Comment(
+                "20.05.2024",
+                "SO36",
+                "The staff was a bit rude, but the atmosphere made up for it!",
+                "46-55",
+                "lesbian",
+                "cisgender female",
+                false
+            ),
+            Comment(
+                "19.05.2024",
+                "SO36",
+                "Loved the underground vibes and the open-minded crowd!",
+                "26-35",
+                "bisexual",
+                "transgender male",
+                true
+            ),
+            Comment(
+                "23.05.2024",
+                "Watergate",
+                "Loved the industrial vibe and the diverse crowd!",
+                "19-25",
+                "pansexual",
+                "non-binary",
+                true
+            ),
+            Comment(
+                "22.05.2024",
+                "Watergate",
+                "The music was a bit too techno for my taste, but the drinks were great!",
+                "36-45",
+                "gay",
+                "cisgender male",
+                false
+            ),
+            Comment(
+                "21.05.2024",
+                "Watergate",
+                "Loved the inclusive atmosphere and the friendly staff!",
+                "26-35",
+                "lesbian",
+                "cisgender female",
+                true
+            ),
+            Comment(
+                "20.05.2024",
+                "Watergate",
+                "The staff was a bit aloof, but the music was on point!",
+                "46-55",
+                "bisexual",
+                "transgender female",
+                false
+            ),
+            Comment(
+                "19.05.2024",
+                "Watergate",
+                "Loved the experimental vibes and the open-minded crowd!",
+                "26-35",
+                "queer",
+                "genderfluid",
+                true
+            ),
+            Comment(
+                "23.05.2024",
+                "Sisyphos",
+                "Loved the underground vibe and the diverse crowd!",
+                "19-25",
+                "lesbian",
+                "cisgender female",
+                true
+            ),
+            Comment(
+                "22.05.2024",
+                "Sisyphos",
+                "The music was a bit too experimental for my taste, but the drinks were great!",
+                "36-45",
+                "gay",
+                "cisgender male",
+                false
+            ),
+            Comment(
+                "21.05.2024",
+                "Sisyphos",
+                "Loved the inclusive atmosphere and the friendly staff!",
+                "26-35",
+                "pansexual",
+                "non-binary",
+                true
+            ),
+            Comment(
+                "20.05.2024",
+                "Sisyphos",
+                "The staff was a bit rude, but the atmosphere made up for it!",
+                "46-55",
+                "bisexual",
+                "transgender male",
+                false
+            ),
+            Comment(
+                "19.05.2024",
+                "Sisyphos",
+                "Loved the experimental vibes and the open-minded crowd!",
+                "26-35",
+                "queer",
+                "genderfluid",
+                true
+            ),
+            Comment(
+                "23.05.2024",
+                "Golden Gate",
+                "Loved the inclusive atmosphere and the friendly staff!",
+                "19-25",
+                "gay",
+                "cisgender male",
+                true
+            ),
+            Comment(
+                "22.05.2024",
+                "Golden Gate",
+                "The music was a bit too mainstream for my taste, but the drinks were great!",
+                "36-45",
+                "lesbian",
+                "cisgender female",
+                false
+            ),
+            Comment(
+                "21.05.2024",
+                "Golden Gate",
+                "Loved the diverse crowd and the open-minded vibe!",
+                "26-35",
+                "pansexual",
+                "non-binary",
+                true
+            ),
+            Comment(
+                "20.05.2024",
+                "Golden Gate",
+                "The staff was a bit rude, but the atmosphere made up for it!",
+                "46-55",
+                "bisexual",
+                "transgender female",
+                false
+            ),
+            Comment(
+                "19.05.2024",
+                "Golden Gate",
+                "Loved the inclusive vibes and the friendly crowd!",
+                "26-35",
+                "queer",
+                "genderfluid",
+                true
+            ),
+            Comment(
+                "23.05.2024",
+                "Club Triebwerk",
+                "Loved the gritty vibe and the diverse crowd!",
+                "19-25",
+                "pansexual",
+                "non-binary",
+                true
+            ),
+            Comment(
+                "22.05.2024",
+                "Club Triebwerk",
+                "The music was a bit too industrial for my taste, but the drinks were great!",
+                "36-45",
+                "gay",
+                "cisgender male",
+                false
+            ),
+            Comment(
+                "21.05.2024",
+                "Club Triebwerk",
+                "Loved the inclusive atmosphere and the friendly staff!",
+                "26-35",
+                "lesbian",
+                "cisgender female",
+                true
+            ),
+            Comment(
+                "20.05.2024",
+                "Club Triebwerk",
+                "The staff was a bit aloof, but the music was on point!",
+                "46-55",
+                "bisexual",
+                "transgender male",
+                false
+            ),
+            Comment(
+                "19.05.2024",
+                "Club Triebwerk",
+                "Loved the experimental vibes and the open-minded crowd!",
+                "26-35",
+                "queer",
+                "genderfluid",
+                true
+            ),
+            Comment(
+                "23.05.2024",
+                "Revier Südost",
+                "Loved the underground vibe and the diverse crowd!",
+                "19-25",
+                "lesbian",
+                "cisgender female",
+                true
+            ),
+            Comment(
+                "22.05.2024",
+                "Revier Südost",
+                "The music was a bit too techno for my taste, but the drinks were great!",
+                "36-45",
+                "gay",
+                "cisgender male",
+                false
+            ),
+            Comment(
+                "21.05.2024",
+                "Revier Südost",
+                "Loved the inclusive atmosphere and the friendly staff!",
+                "26-35",
+                "pansexual",
+                "non-binary",
+                true
+            ),
+            Comment(
+                "20.05.2024",
+                "Revier Südost",
+                "The staff was a bit rude, but the atmosphere made up for it!",
+                "46-55",
+                "bisexual",
+                "transgender female",
+                false
+            ),
+            Comment(
+                "19.05.2024",
+                "Revier Südost",
+                "Loved the experimental vibes and the open-minded crowd!",
+                "26-35",
+                "queer",
+                "genderfluid",
+                true
+            ),
+            Comment(
+                "23.05.2024",
+                "TRAUMA BAR UND KINO",
+                "Loved the edgy vibe and the diverse crowd!",
+                "19-25",
+                "gay",
+                "cisgender male",
+                true
+            ),
+            Comment(
+                "22.05.2024",
+                "TRAUMA BAR UND KINO",
+                "The music was a bit too experimental for my taste, but the drinks were great!",
+                "36-45",
+                "lesbian",
+                "cisgender female",
+                false
+            ),
+            Comment(
+                "21.05.2024",
+                "TRAUMA BAR UND KINO",
+                "Loved the inclusive atmosphere and the friendly staff!",
+                "26-35",
+                "pansexual",
+                "non-binary",
+                true
+            ),
+            Comment(
+                "20.05.2024",
+                "TRAUMA BAR UND KINO",
+                "The staff was a bit aloof, but the music was on point!",
+                "46-55",
+                "bisexual",
+                "transgender male",
+                false
+            ),
+            Comment(
+                "19.05.2024",
+                "TRAUMA BAR UND KINO",
+                "Loved the experimental vibes and the open-minded crowd!",
+                "26-35",
+                "queer",
+                "genderfluid",
+                true
+            ),
+            Comment(
+                "23.05.2024",
+                "Volkspark Hasenheide (cruising)",
+                "Great spot for meeting new people and having fun!",
+                "19-25",
+                "pansexual",
+                "non-binary",
+                true
+            ),
+            Comment(
+                "22.05.2024",
+                "Volkspark Hasenheide (cruising)",
+                "Felt a bit unsafe at times, but overall a good experience.",
+                "36-45",
+                "gay",
+                "cisgender male",
+                false
+            ),
+            Comment(
+                "21.05.2024",
+                "Volkspark Hasenheide (cruising)",
+                "Loved the open-minded atmosphere and the diverse crowd!",
+                "26-35",
+                "lesbian",
+                "cisgender female",
+                true
+            ),
+            Comment(
+                "20.05.2024",
+                "Volkspark Hasenheide (cruising)",
+                "The park was a bit too crowded for my taste, but I had a good time.",
+                "46-55",
+                "bisexual",
+                "transgender female",
+                false
+            ),
+            Comment(
+                "19.05.2024",
+                "Volkspark Hasenheide (cruising)",
+                "Loved the freedom and the friendly vibes!",
+                "26-35",
+                "queer",
+                "genderfluid",
+                true
+            ),
+            Comment(
+                "23.05.2024",
+                "Tiergarten (cruising)",
+                "Great spot for meeting new people and having fun!",
+                "19-25",
+                "lesbian",
+                "cisgender female",
+                true
+            ),
+            Comment(
+                "22.05.2024",
+                "Tiergarten (cruising)",
+                "Felt a bit unsafe at times, but overall a good experience.",
+                "36-45",
+                "gay",
+                "cisgender male",
+                false
+            ),
+            Comment(
+                "21.05.2024",
+                "Tiergarten (cruising)",
+                "Loved the open-minded atmosphere and the diverse crowd!",
+                "26-35",
+                "pansexual",
+                "non-binary",
+                true
+            ),
+            Comment(
+                "20.05.2024",
+                "Tiergarten (cruising)",
+                "The park was a bit too crowded for my taste, but I had a good time.",
+                "46-55",
+                "bisexual",
+                "transgender male",
+                false
+            ),
+            Comment(
+                "19.05.2024",
+                "Tiergarten (cruising)",
+                "Loved the freedom and the friendly vibes!",
+                "26-35",
+                "queer",
+                "genderfluid",
+                true
+            ),
+            Comment(
+                "23.05.2024",
+                "Volkspark Friedrichshain (cruising)",
+                "Great spot for meeting new people and having fun!",
+                "19-25",
+                "gay",
+                "cisgender male",
+                true
+            ),
+            Comment(
+                "22.05.2024",
+                "Volkspark Friedrichshain (cruising)",
+                "Felt a bit unsafe at times, but overall a good experience.",
+                "36-45",
+                "lesbian",
+                "cisgender female",
+                false
+            ),
+            Comment(
+                "21.05.2024",
+                "Volkspark Friedrichshain (cruising)",
+                "Loved the open-minded atmosphere and the diverse crowd!",
+                "26-35",
+                "pansexual",
+                "non-binary",
+                true
+            ),
+            Comment(
+                "20.05.2024",
+                "Volkspark Friedrichshain (cruising)",
+                "The park was a bit too crowded for my taste, but I had a good time.",
+                "46-55",
+                "bisexual",
+                "transgender female",
+                false
+            ),
+            Comment(
+                "19.05.2024",
+                "Volkspark Friedrichshain (cruising)",
+                "Loved the freedom and the friendly vibes!",
+                "26-35",
+                "queer",
+                "genderfluid",
+                true
+            ),
+            Comment(
+                "23.05.2024",
+                "Grunewald (cruising)",
+                "Great spot for meeting new people and having fun!",
+                "19-25",
+                "pansexual",
+                "non-binary",
+                true
+            ),
+            Comment(
+                "22.05.2024",
+                "Grunewald (cruising)",
+                "Felt a bit unsafe at times, but overall a good experience.",
+                "36-45",
+                "gay",
+                "cisgender male",
+                false
+            ),
+            Comment(
+                "21.05.2024",
+                "Grunewald (cruising)",
+                "Loved the open-minded atmosphere and the diverse crowd!",
+                "26-35",
+                "lesbian",
+                "cisgender female",
+                true
+            ),
+            Comment(
+                "20.05.2024",
+                "Grunewald (cruising)",
+                "The park was a bit too crowded for my taste, but I had a good time.",
+                "46-55",
+                "bisexual",
+                "transgender male",
+                false
+            ),
+            Comment(
+                "19.05.2024",
+                "Grunewald (cruising)",
+                "Loved the freedom and the friendly vibes!",
+                "26-35",
+                "queer",
+                "genderfluid",
+                true
+            ),
         )
     }
 }

@@ -140,5 +140,9 @@ class AddCommentFragment : Fragment() {
             Log.d("AddedComment", viewModel.commentsList.value?.last()!!.comment)
             Log.d("CommentsList", viewModel.commentsList.value.toString())
         }
+
+        binding.addCommentCloseBTN.setOnClickListener {
+            it.findNavController().navigateUp()
+        }
     }
 }

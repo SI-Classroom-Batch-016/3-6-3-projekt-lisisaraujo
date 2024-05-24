@@ -24,7 +24,7 @@
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/baseline_coffee_24"
+            android:src="@drawable/bar_icon_pink"
             app:tint="@color/secondary_day" />
 
         <LinearLayout

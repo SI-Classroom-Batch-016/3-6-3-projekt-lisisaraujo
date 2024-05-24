@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.graphics.drawable.toDrawable
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
@@ -32,16 +33,17 @@ class LocationFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val comments = viewModel.commentsList.value
-
         viewModel.currentLocation.observe(viewLifecycleOwner) { currentLocation ->
-            binding.locationDetailsLocationNameTV.text = currentLocation.name
-//            binding.locationDetailsLocationAddressTV.text = currentLocation.address
+            binding.locationDetailsCardLocationNameTV.text = currentLocation.name
             binding.locationDetailsCardLocationNameTV.text = currentLocation.name
             binding.locationDetailsLocationTypeTV.text = currentLocation.type
+            binding.locationDetailsLocationIconIV.setImageResource(viewModel.setMapIcon(currentLocation))
+
+            // Filter comments by the current location
+            viewModel.filterCommentsByLocation(currentLocation.name)
         }
 
-        binding.locationDetailsBackBTN.setOnClickListener {
+        binding.toolbar.setNavigationOnClickListener {
             it.findNavController().navigateUp()
         }
 
@@ -49,19 +51,11 @@ class LocationFragment : Fragment() {
             it.findNavController().navigate(R.id.addCommentFragment)
         }
 
-
         val recyclerView = binding.commentCardRV
-
-//        viewModel.commentsList.observe(viewLifecycleOwner) { comments ->
-//
-//        }
-
-        if (comments != null) {
-            val filteredComments = comments.filter { comment ->
-                comment.location == viewModel.currentLocation.value?.name
-            }.toMutableList()
-            recyclerView.adapter =
-                viewModel.currentLocation.value?.let { CommentAdapter(filteredComments, it.name) }
+        viewModel.filteredComments.observe(viewLifecycleOwner) { filteredComments ->
+            recyclerView.adapter = viewModel.currentLocation.value?.let { currentLocation ->
+                CommentAdapter(filteredComments.toMutableList(), currentLocation.name)
+            }
         }
     }
 }

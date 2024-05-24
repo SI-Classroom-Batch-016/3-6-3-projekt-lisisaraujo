@@ -25,4 +25,9 @@
         android:name="de.syntax_institut.mvvm.ui.AddCommentFragment"
         android:label="fragment_add_comment"
         tools:layout="@layout/fragment_add_comment" />
+    <fragment
+        android:id="@+id/filterLocationsFragment"
+        android:name="de.syntax_institut.mvvm.ui.FilterLocationsFragment"
+        android:label="fragment_filter_locations"
+        tools:layout="@layout/fragment_filter_locations" />
 </navigation>
