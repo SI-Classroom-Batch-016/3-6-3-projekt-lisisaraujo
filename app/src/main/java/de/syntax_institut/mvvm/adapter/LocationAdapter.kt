@@ -13,7 +13,7 @@ import de.syntax_institut.mvvm.databinding.LocationDetailsBinding
 
 class LocationAdapter(
     private val locations: MutableList<Location>,
-    val itemClickedCallback: (Location) -> Unit
+    val itemClickedCallback: (Location) -> Unit,
 ) :
     RecyclerView.Adapter<LocationAdapter.ItemViewHolder>() {
 
@@ -36,13 +36,12 @@ class LocationAdapter(
         val binding = holder.binding
 
         binding.locationDetailsCardLocationNameTV.text = location.name
-//        binding.locationDetailsLocationTypeTV.text = location.type
-//        binding.locationDetailsLocationAddressTV.text = location.address
+        binding.locationDetailsLocationTypeTV.text = location.type
+
 
         binding.locationDetailLocationCardCV.setOnClickListener {
             itemClickedCallback(location)
         }
-
 
     }
 }

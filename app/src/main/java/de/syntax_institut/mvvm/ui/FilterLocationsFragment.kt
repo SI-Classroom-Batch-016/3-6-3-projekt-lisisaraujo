@@ -67,5 +67,8 @@ class FilterLocationsFragment : Fragment() {
             viewModel.removeLocationFilters()
             it.findNavController().navigateUp()
         }
+        binding.closeBTN.setOnClickListener {
+            it.findNavController().navigateUp()
+        }
     }
 }

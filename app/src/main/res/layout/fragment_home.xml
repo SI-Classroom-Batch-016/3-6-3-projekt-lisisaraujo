@@ -11,7 +11,7 @@
         android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/secondary_night"
+        android:backgroundTint="@color/secondary_day"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -24,14 +24,14 @@
             app:titleTextAppearance="@style/TextAppearance.MaterialComponents.Headline6"
             app:titleTextColor="@color/white">
 
-<!--            <ImageButton-->
-<!--                android:id="@+id/searchButton"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginStart="16dp"-->
-<!--                android:background="?attr/selectableItemBackgroundBorderless"-->
-<!--                android:src="@drawable/search_icon"-->
-<!--                app:tint="@color/white" />-->
+            <!--            <ImageButton-->
+            <!--                android:id="@+id/searchButton"-->
+            <!--                android:layout_width="wrap_content"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_marginStart="16dp"-->
+            <!--                android:background="?attr/selectableItemBackgroundBorderless"-->
+            <!--                android:src="@drawable/search_icon"-->
+            <!--                app:tint="@color/white" />-->
 
             <TextView
                 android:id="@+id/appNameTextView"
@@ -42,7 +42,7 @@
                 android:gravity="center"
                 android:maxLines="1"
                 android:text="@string/app_name"
-                android:textColor="@color/white"
+                android:textColor="@color/primary_day"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
@@ -59,16 +59,16 @@
                     android:layout_height="wrap_content"
                     android:background="?attr/selectableItemBackgroundBorderless"
                     android:src="@drawable/filter_alt_24dp_fill0_wght400_grad0_opsz24"
-                    app:tint="@color/white" />
+                    app:tint="@color/primary_day" />
 
-<!--                <ImageButton-->
-<!--                    android:id="@+id/menuButton"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginStart="16dp"-->
-<!--                    android:background="?attr/selectableItemBackgroundBorderless"-->
-<!--                    android:src="@drawable/menu_24dp_fill0_wght400_grad0_opsz24"-->
-<!--                    app:tint="@color/white" />-->
+                <!--                <ImageButton-->
+                <!--                    android:id="@+id/menuButton"-->
+                <!--                    android:layout_width="wrap_content"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:layout_marginStart="16dp"-->
+                <!--                    android:background="?attr/selectableItemBackgroundBorderless"-->
+                <!--                    android:src="@drawable/menu_24dp_fill0_wght400_grad0_opsz24"-->
+                <!--                    app:tint="@color/white" />-->
 
             </LinearLayout>
 
@@ -98,6 +98,6 @@
         android:src="@drawable/baseline_add_24"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:tint="@android:color/white" />
+        app:tint="@color/primary_day" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

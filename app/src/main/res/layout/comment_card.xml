@@ -2,7 +2,7 @@
 <com.google.android.material.card.MaterialCardView android:id="@+id/commentCV"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:backgroundTint="@color/primary_day"
+    android:backgroundTint="@color/background_day"
     app:cardCornerRadius="30dp"
     app:cardElevation="4dp"
     app:cardUseCompatPadding="true"
@@ -22,7 +22,7 @@
                 android:layout_height="wrap_content"
                 android:text=""
                 android:textSize="18sp"
-                android:textColor="@color/white"/>
+                android:textColor="@color/primary_day"/>
 
             <TextView
                 android:id="@+id/commentTV"
@@ -31,7 +31,7 @@
                 android:text="comment"
                 android:textSize="24sp"
                 android:textStyle="bold"
-                android:textColor="@color/white"/>
+                android:textColor="@color/black"/>
 
             <TextView
                 android:id="@+id/dateTV"
@@ -40,7 +40,7 @@
                 android:layout_marginEnd="16dp"
                 android:text=""
                 android:textSize="18sp"
-                android:textColor="@color/white"/>
+                android:textColor="@color/black"/>
 
         </LinearLayout>
 </com.google.android.material.card.MaterialCardView>

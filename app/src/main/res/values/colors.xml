@@ -5,7 +5,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="primary_day">#7D3CF7</color> <!-- Vibrant Purple -->
     <color name="background_day">#F5F5F5</color> <!-- Light Gray -->
-    <color name="secondary_day">#FF5C8E</color> <!-- Hot Pink -->
+    <color name="secondary_day">#fcfcfde6</color> <!-- Hot Pink -->
     <color name="transparent_bg">#00000000</color> <!-- Transparent -->
 
     <!-- Night Mode -->
