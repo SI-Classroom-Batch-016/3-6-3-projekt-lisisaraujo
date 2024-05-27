@@ -57,12 +57,6 @@ dependencies {
 
     // mapbox extensions
     implementation("com.mapbox.maps:android:11.3.1")
-    // If you're using compose also add the compose extension
-//    implementation("com.mapbox.extension:maps-compose:11.3.1")
 
-    // firebase
-//    implementation 'com.google.firebase:firebase-admin:9.2.0'
-
-    // mapbox geolocation dependencies
 
 }

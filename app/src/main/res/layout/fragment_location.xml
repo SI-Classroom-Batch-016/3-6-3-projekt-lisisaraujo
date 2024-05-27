@@ -22,9 +22,22 @@
             app:navigationIconTint="@color/white"
             app:title="@string/location_name"
             app:titleTextAppearance="@style/TextAppearance.MaterialComponents.Headline6"
-            app:titleTextColor="@color/white" />
+            app:titleTextColor="@color/white">
+
+            <ImageButton
+                android:id="@+id/location_filterButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/filter_alt_24dp_fill0_wght400_grad0_opsz24"
+                app:tint="@color/white"
+                android:layout_margin="20sp"/>
+
+        </com.google.android.material.appbar.MaterialToolbar>
 
     </com.google.android.material.appbar.AppBarLayout>
+
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -124,6 +137,6 @@
         android:layout_margin="16dp"
         android:contentDescription="add comment"
         android:src="@drawable/baseline_add_24"
-        android:tint="@color/secondary_day" />
+        app:tint="@color/secondary_day" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -4,36 +4,31 @@ import android.R
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.findNavController
 import de.syntax_institut.mvvm.SharedViewModel
-import de.syntax_institut.mvvm.data.model.Comment
-import de.syntax_institut.mvvm.data.model.Location
-import de.syntax_institut.mvvm.databinding.FragmentAddCommentBinding
-import de.syntax_institut.mvvm.databinding.FragmentAddLocationBinding
+import de.syntax_institut.mvvm.databinding.FragmentFilterCommentsBinding
 
-class AddCommentFragment : Fragment() {
-    private lateinit var binding: FragmentAddCommentBinding
+
+class FilterCommentsFragment : Fragment() {
+    private lateinit var binding: FragmentFilterCommentsBinding
     private val viewModel: SharedViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentAddCommentBinding.inflate(layoutInflater, container, false)
+        binding = FragmentFilterCommentsBinding.inflate(layoutInflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        var location = viewModel.currentLocation.value?.name.toString()
         var age: String = ""
         var sexualOrientation: String = ""
         var gender: String = ""
@@ -42,7 +37,7 @@ class AddCommentFragment : Fragment() {
         val ageAdapter = ArrayAdapter(
             requireContext(),
             R.layout.simple_spinner_item,
-            listOf("All", "<18", "19 - 25", "26-35", "36 - 45", "46 - 55", "55+")
+            listOf("All", "<18", "19-25", "26-35", "36-45", "46-55", "55+")
         )
         ageAdapter.setDropDownViewResource(R.layout.simple_spinner_dropdown_item)
         binding.ageSpinner.setAdapter(ageAdapter)
@@ -51,7 +46,7 @@ class AddCommentFragment : Fragment() {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
             override fun afterTextChanged(s: Editable?) {
-                age = s.toString().lowercase()
+                viewModel.filterByAge(s.toString())
             }
         })
 
@@ -79,7 +74,7 @@ class AddCommentFragment : Fragment() {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
             override fun afterTextChanged(s: Editable?) {
-                gender = s.toString().lowercase()
+                viewModel.filterByGender(s.toString().lowercase())
             }
         })
 
@@ -107,44 +102,54 @@ class AddCommentFragment : Fragment() {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
             override fun afterTextChanged(s: Editable?) {
-                sexualOrientation = s.toString().lowercase()
+                viewModel.filterBySexualOrientation(s.toString().lowercase())
             }
         })
-
 
         val bipocAdapter = ArrayAdapter(
             requireContext(),
             R.layout.simple_spinner_item,
             listOf("All", "Yes", "No")
         )
+
         bipocAdapter.setDropDownViewResource(R.layout.simple_spinner_dropdown_item)
         binding.isBipocSpinner.setAdapter(bipocAdapter)
+
 
         binding.isBipocSpinner.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
             override fun afterTextChanged(s: Editable?) {
-                if(s.toString().lowercase() == "yes") isBipoc = true
+                val isBipoc = when (s.toString().lowercase()) {
+                    "yes" -> true
+                    "no" -> false
+                    else -> null
+                }
+
+                viewModel.filterByisBipoc(isBipoc)
             }
         })
 
 
-        binding.submitBTN.setOnClickListener {
-            val comment = binding.commentET.text.toString()
-            val newComment = Comment(
-                "", location, comment, age, sexualOrientation, gender, isBipoc
-            )
-
-            viewModel.addComment(
-                newComment
-            )
-            it.findNavController().navigateUp()
-            Log.d("AddedComment", viewModel.commentsList.value?.last()!!.comment)
-            Log.d("CommentsList", viewModel.commentsList.value.toString())
-        }
-
-        binding.addCommentCloseBTN.setOnClickListener {
+        binding.applyFilterButton.setOnClickListener {
             it.findNavController().navigateUp()
         }
+
+        binding.closeButton.setOnClickListener {
+            it.findNavController().navigateUp()
+        }
+
+        binding.removeFiltersButton.setOnClickListener {
+            viewModel.removeCommentFilters()
+           resetFilters()
+            it.findNavController().navigateUp()
+        }
+    }
+
+    private fun resetFilters() {
+        binding.ageSpinner.setSelection(0)
+        binding.genderSpinner.setSelection(0)
+        binding.sexualOrientationSpinner.setSelection(0)
+        binding.isBipocSpinner.setSelection(0)
     }
 }

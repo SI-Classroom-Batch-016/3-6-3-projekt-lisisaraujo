@@ -1,6 +1,7 @@
 package de.syntax_institut.mvvm.ui
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +10,7 @@ import androidx.core.graphics.drawable.toDrawable
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.navigateUp
 import androidx.recyclerview.widget.LinearLayoutManager
 import de.syntax_institut.mvvm.R
 import de.syntax_institut.mvvm.SharedViewModel
@@ -37,19 +39,23 @@ class LocationFragment : Fragment() {
             binding.locationDetailsCardLocationNameTV.text = currentLocation.name
             binding.locationDetailsCardLocationNameTV.text = currentLocation.name
             binding.locationDetailsLocationTypeTV.text = currentLocation.type
-            binding.locationDetailsLocationIconIV.setImageResource(viewModel.setMapIcon(currentLocation))
+            binding.locationDetailsLocationIconIV.setImageResource(
+                viewModel.setMapIcon(
+                    currentLocation
+                )
+            )
 
             // Filter comments by the current location
-            viewModel.filterCommentsByLocation(currentLocation.name)
+            viewModel.showCommentsInLocation(currentLocation.name)
         }
 
-        binding.toolbar.setNavigationOnClickListener {
-            it.findNavController().navigateUp()
-        }
+            binding.toolbar.setNavigationOnClickListener {
+                it.findNavController().navigateUp()
+            }
 
-        binding.addCommentFAB.setOnClickListener {
-            it.findNavController().navigate(R.id.addCommentFragment)
-        }
+            binding.addCommentFAB.setOnClickListener {
+                it.findNavController().navigate(R.id.addCommentFragment)
+            }
 
         val recyclerView = binding.commentCardRV
         viewModel.filteredComments.observe(viewLifecycleOwner) { filteredComments ->
@@ -57,5 +63,11 @@ class LocationFragment : Fragment() {
                 CommentAdapter(filteredComments.toMutableList(), currentLocation.name)
             }
         }
+
+        binding.locationFilterButton.setOnClickListener {
+            Log.d("filter comments fragment", "navigated")
+            it.findNavController().navigate(R.id.filterCommentsFragment)
+        }
+
+        }
     }
-}

@@ -30,4 +30,9 @@
         android:name="de.syntax_institut.mvvm.ui.FilterLocationsFragment"
         android:label="fragment_filter_locations"
         tools:layout="@layout/fragment_filter_locations" />
+    <fragment
+        android:id="@+id/filterCommentsFragment"
+        android:name="de.syntax_institut.mvvm.ui.FilterCommentsFragment"
+        android:label="fragment_filter_comments"
+        tools:layout="@layout/fragment_filter_comments" />
 </navigation>
